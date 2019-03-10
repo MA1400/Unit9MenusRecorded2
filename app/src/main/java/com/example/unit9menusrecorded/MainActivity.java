@@ -99,10 +99,7 @@ public class MainActivity extends AppCompatActivity
             }
             return true;
         }
-        if (id == R.id.action_add) {Snackbar.make(getWindow().getDecorView(), "Study mates not implemented yet", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -113,18 +110,35 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_add) {Snackbar.make(getWindow().getDecorView(), "Study mates not implemented yet", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+            return true;
+        }
+        //Start of Navigation menu buttons
+        if (id == R.id.nav_settings) {  Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        if (id == R.id.nav_text) { Intent smsIntent = new Intent (Intent.ACTION_SEND);
+            smsIntent.setType("*/*");
+            smsIntent.putExtra(Intent.EXTRA_SUBJECT, "Hey Study Partner");
+            if (smsIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(smsIntent);
+            }
+            return true;
+        }
+        if (id == R.id.nav_delete) {Snackbar.make(getWindow().getDecorView(), "Delete", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+            return true;
+        }
+        if (id == R.id.nav_email) {
+            Intent emailIntent = new Intent (Intent.ACTION_SEND);
+            emailIntent.setType("*/*");
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Hey Study Partner");
+            if (emailIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(emailIntent);
+            }
+            return true;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
